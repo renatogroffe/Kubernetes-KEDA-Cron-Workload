@@ -1,0 +1,12 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: workload-scaledobject
+spec:
+  scaleTargetRef:
+    name: webapp2
+  triggers:
+  - type: kubernetes-workload
+    metadata:
+      podSelector: 'app=webapp'
+      value: '2'
